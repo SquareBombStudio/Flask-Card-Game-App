@@ -7,7 +7,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 app = Flask(__name__, template_folder=TEMPLATE_DIR, static_folder=STATIC_DIR)
-app.secret_key = os.environ.get('REMINDME_SECRET','replace_with_random_secret')
+app.secret_key = os.environ.get('REMINDME_SECRET','80db887ecdef3a36fed40a4c3995eaf8f05a61769a5d18329a6025621842e6fb')
 
 # DB config (change to your credentials)
 DB_CONFIG = {

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Classement - RemindMe{% endblock %}
+
+{% block content %}
+<div class="center" style="max-width:800px;margin:40px auto;">
+  <h1>Classement</h1>
+  <p><a href="{{ url_for('dashboard') }}" class="btn btn-sm btn-secondary">Retour</a></p>
+  <div id="content"></div>
+</div>
+{% endblock %}

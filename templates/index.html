@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}RemindMe – Accueil{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<div class="jumbotron jumbotron-fluid text-center text-white hero-gradient py-5 mb-0">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">Améliore ta mémoire en t'amusant 🎮</h1>
+        <p class="lead mb-4">
+            Un jeu simple, fun et progressif pour booster ton cerveau.
+        </p>
+        <a href="{{ url_for('register') }}" class="btn btn-lg btn-warning shadow-lg">
+            Commencer l'aventure
+        </a>
+    </div>
+</div>
+
+<!-- FEATURES SECTION -->
+<div class="container my-5">
+    <div class="row g-4 justify-content-center">
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+            <div class="card shadow-lg border-0 rounded-4 card-content">
+                <div class="card-body text-center p-4">
+                    <h4 class="card-title mb-2">🧠 Entraînement mémoire</h4>
+                    <p class="card-text text-muted">Des défis qui s'adaptent à ton niveau et stimulent ton cerveau.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+            <div class="card shadow-lg border-0 rounded-4 card-content">
+                <div class="card-body text-center p-4">
+                    <h4 class="card-title mb-2">🏆 Score & progression</h4>
+                    <p class="card-text text-muted">Observe tes progrès et améliore ton score au fil du temps.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+            <div class="card shadow-lg border-0 rounded-4 card-content">
+                <div class="card-body text-center p-4">
+                    <h4 class="card-title mb-2">🎨 Simple & joli</h4>
+                    <p class="card-text text-muted">Une interface douce, intuitive et agréable à utiliser.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+
+<div class="auth-box"
+     style="max-width:350px;margin:50px auto;padding:30px;
+            background:linear-gradient(145deg,#bde0fe,#ffc8dd);
+            border-radius:20px;box-shadow:0 6px 15px rgba(0,0,0,0.2);text-align:center;">
+
+<h2 style="color:#fff;font-weight:700;margin-bottom:20px;text-shadow:1px 2px 4px rgba(0,0,0,0.3);">
+    Créer un compte
+</h2>
+
+{% if error %}
+<p style="color:#ff4d6d;font-weight:600;margin-bottom:15px;">{{ error }}</p>
+{% endif %}
+
+<form method="POST" style="display:flex;flex-direction:column;gap:15px;">
+    <input name="username" placeholder="Nom d'utilisateur" required
+           style="padding:10px;border-radius:12px;border:2px solid #ffc8dd;">
+
+    <input id="password" name="password" type="password" placeholder="Mot de passe" required
+           style="padding:10px;border-radius:12px;border:2px solid #bde0fe;">
+
+    <div id="pwHints" style="font-size:0.85rem;color:#fff;text-align:left;"></div>
+
+    <button type="submit"
+            style="background:#ffafcc;color:#fff;font-weight:700;padding:10px;
+                   border-radius:12px;border:none;cursor:pointer;">
+        Créer
+    </button>
+</form>
+
+<p style="margin-top:15px;color:#fff;">
+    Vous avez Déjà un compte ?
+    <a href="{{ url_for('login') }}" style="color:#1179b9;">Connexion</a>
+</p>
+
+</div>
+
+<script>
+    const pw = document.getElementById("password");
+    const hints = document.getElementById("pwHints");
+
+    pw.addEventListener("input", () => {
+        const v = pw.value;
+        const checks = [
+            { ok: v.length >= 8, txt: "≥ 8 caractères" },
+            { ok: /[A-Z]/.test(v), txt: "1 majuscule" },
+            { ok: /\d/.test(v), txt: "1 chiffre" },
+            { ok: /[^A-Za-z0-9]/.test(v), txt: "1 caractère spécial" }
+        ];
+
+        hints.innerHTML = checks
+            .map(c => `<div style="color:${c.ok ? 'green' : '#c0392b'}">${c.ok ? "✔" : "✖"} ${c.txt}</div>`)
+            .join("");
+    });
+</script>
+
+{% endblock %}

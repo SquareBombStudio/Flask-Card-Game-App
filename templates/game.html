@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Jeu - RemindMe{% endblock %}
+
+{% block content %}
+<div class="center" style="max-width:1000px; margin:40px auto; text-align:center;">
+  <h2>Difficulty: {{ difficulty|capitalize }}</h2>
+
+  <div class="stats my-3">
+    <div class="stat-box">Coups: <span id="moves">0</span></div>
+    <div class="stat-box">Temps: <span id="time">0</span>s</div>
+    <button id="saveScore" class="btn-save">Enregistrer le score</button>
+  </div>
+
+  <div id="board" class="board" aria-live="polite"></div>
+</div>
+<!-- Popup Modal -->
+<div id="gamePopup" class="popup-overlay">
+  <div class="popup-box">
+    <p id="popupText"></p>
+    <div class="popup-buttons">
+      <button id="replayBtn">Rejouer</button>
+      <button id="okBtn">OK</button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+const userId = {{ user_id }};
+const difficulty = "{{ difficulty }}";
+const initialDeck = {{ deck|tojson }};
+</script>
+<script src="{{ url_for('static', filename='js/game.js') }}"></script>
+{% endblock %}

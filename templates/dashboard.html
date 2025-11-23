@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Tableau de bord - RemindMe{% endblock %}
+
+{% block content %}
+<div class="center" style="max-width:900px; margin:40px auto; text-align:center;">
+  <h2 class="mb-4">Choisissez la difficulté</h2>
+
+  <div class="d-flex justify-content-center mb-4" style="gap:15px;">
+    <a class="btn btn-easy" href="{{ url_for('game') }}?difficulty=easy">Facile</a>
+    <a class="btn btn-medium" href="{{ url_for('game') }}?difficulty=medium">Moyen</a>
+    <a class="btn btn-hard" href="{{ url_for('game') }}?difficulty=hard">Difficile</a>
+  </div>
+
+  <div class="d-flex justify-content-center flex-wrap" style="gap:20px;">
+    <div class="lb-panel">
+      <h3>Facile</h3>
+      <table id="lb-easy"><tbody></tbody></table>
+    </div>
+
+    <div class="lb-panel">
+      <h3>Moyen</h3>
+      <table id="lb-medium"><tbody></tbody></table>
+    </div>
+
+    <div class="lb-panel">
+      <h3>Difficile</h3>
+      <table id="lb-hard"><tbody></tbody></table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function fetchLB(diff, elId) {
+  fetch('/leaderboard_data/' + diff)
+    .then(r => r.json())
+    .then(data => {
+      const tb = document.querySelector('#' + elId + ' tbody');
+      tb.innerHTML = '<tr><th>Joueur</th><th>Temps</th><th>Coups</th></tr>';
+      data.forEach(row => {
+        tb.innerHTML += `<tr><td>${row.username}</td><td>${row.best_time}</td><td>${row.best_moves}</td></tr>`;
+      });
+    });
+}
+fetchLB('easy', 'lb-easy');
+fetchLB('medium', 'lb-medium');
+fetchLB('hard', 'lb-hard');
+</script>
+{% endblock %}

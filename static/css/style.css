@@ -1,0 +1,270 @@
+/* Base */
+body {
+    font-family: "Quicksand", Arial, sans-serif;
+    background:#f5f7fb;
+    color:#222;
+    margin:0;
+    padding:0;
+}
+
+.center {
+    max-width:1000px;
+    margin:30px auto;
+    text-align:center;
+}
+
+/* Buttons */
+.btn {
+    border-radius:10px;
+    color:#fff;
+    padding:10px 16px;
+    text-decoration:none;
+    display:inline-block;
+}
+.btn-easy { background:#bde0fe; font-weight:700; }
+.btn-medium { background:#ffc8dd; font-weight:700; }
+.btn-hard { background:#ffafcc; font-weight:700; }
+.btn-save {
+    background:#ffafcc;
+    color:#fff;
+    padding:10px 16px;
+    border-radius:12px;
+    font-weight:700;
+}
+
+/* Auth */
+.auth-box {
+    max-width:380px;
+    margin:60px auto;
+    padding:20px;
+    border-radius:12px;
+}
+
+/* Leaderboard */
+.lb-panel {
+    background: #fff;
+    border-radius:12px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    padding:12px;
+    min-width:220px;
+}
+.lb-panel h3 {
+    font-family:'Patrick Hand', cursive;
+    color:#333;
+    margin-bottom:8px;
+}
+
+/* Tables */
+table { width:100%; border-collapse:collapse; }
+table th, table td { padding:6px 8px; text-align:left; font-size:0.95rem; }
+table th { background:#ffafcc; color:#fff; }
+
+/* Stats */
+.stats {
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:12px;
+}
+.stat-box {
+    background:#fff;
+    padding:10px 14px;
+    border-radius:10px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    font-weight:700;
+}
+
+/* ---------------------------- */
+/*        GAME BOARD            */
+/* ---------------------------- */
+#board {
+    display: grid;
+    gap: 12px;
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    justify-content: center;
+}
+/* Prevent text and image selection on cards */
+#board, .card, .card * {
+    user-select: none;          /* standard */
+    -webkit-user-select: none;  /* Chrome/Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE/Edge */
+    pointer-events: auto;       /* ensure clicks still work */
+}
+
+/* Prevent dragging images */
+.card img {
+    -webkit-user-drag: none; /* Chrome/Safari */
+    -khtml-user-drag: none;  /* older browsers */
+    -moz-user-drag: none;    /* Firefox */
+    -o-user-drag: none;      /* Opera */
+}
+/* Prevent selection on the whole game UI */
+.center, .center * {
+    user-select: none;          /* standard */
+    -webkit-user-select: none;  /* Chrome/Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE/Edge */
+}
+/* Disable text selection for the whole page */
+body, body * {
+    user-select: none;          /* standard */
+    -webkit-user-select: none;  /* Chrome/Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE/Edge */
+}
+
+/* Allow selecting input fields or textareas if needed */
+input, textarea {
+    user-select: text !important;
+}
+/* CARD (base mobile first) */
+.card {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+}
+
+/* Tablet */
+@media (min-width: 600px) {
+    .card {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+    .card {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* Large desktops */
+@media (min-width: 1400px) {
+    .card {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Faces */
+.card .front,
+.card .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    transition: transform 0.6s;
+}
+
+/* Front */
+.card .front {
+    background: linear-gradient(145deg, #4d99dcff, #c24a72ff);
+    color: #fff;
+    font-family: "Patrick Hand", cursive;
+    font-size: 2rem;
+    transform: rotateY(0deg);
+}
+
+/* Back */
+.card .back {
+    transform: rotateY(180deg);
+    background: #fff;
+}
+
+/* Image in back */
+.card img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* Flip animation */
+.card.flipped {
+    transform: rotateY(180deg);
+}
+/* Hero gradient */
+.hero-gradient {
+    background: linear-gradient(135deg, #4d99dc, #c24a72);
+}
+
+/* Card width & centering */
+.card-content {
+    min-height: 200px;       /* keep cards visually balanced */
+    width: 100%;             /* allow cards to expand fully inside column */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+/* Card hover effect */
+.card-content:hover {
+    transform: translateY(-8px);
+}
+
+
+/* Rounded buttons with shadow */
+.btn-warning {
+    border-radius: 50px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Hero text shadow */
+.jumbotron .display-4 {
+    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none; /* hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-box {
+  background: linear-gradient(135deg, #bde0fe, #ffc8dd);
+  border-radius: 20px;
+  padding: 30px 40px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  max-width: 350px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.popup-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #fff;
+}
+
+#replayBtn { background: #1179b9; }
+#okBtn { background: #ff4d6d; }
